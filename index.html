@@ -39,7 +39,12 @@
       min-height: 100%;
       background-color: #D97706;
       background-image: url("splash/img/light-background.png");
-      background-size: 100% 100%;
+      /* cover (not "100% 100%") so the image fills the viewport without
+         distortion. Crop is preferred over stretch since the splash
+         portrait runs at a fixed aspect ratio. */
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
     }
 
     .center {
