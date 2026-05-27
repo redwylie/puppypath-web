@@ -5,7 +5,7 @@
     "display": "standalone",
     "background_color": "#0061A4",
     "theme_color": "#0061A4",
-    "description": "A new Flutter project.",
+    "description": "Week-by-week puppy training tracker — Plan, 100 Experiences, Tips, and the MSPCA Level 1 course homework in one app.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
