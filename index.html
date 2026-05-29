@@ -14,6 +14,30 @@
   -->
   <base href="/">
 
+  <!--
+    coi-serviceworker registers a service worker that rewrites response
+    headers so the page becomes cross-origin isolated (`crossOriginIsolated
+    === true`), which unlocks `SharedArrayBuffer` and OPFS storage for the
+    Drift Wasm database. Without this, Drift falls back to IndexedDB-backed
+    storage tiers which have a known silent-hang bug on writes to certain
+    tables (specifically `practice_behaviors`, with its enum-converter
+    columns). See memory/project_drift_wasm_batch_hang.md for the full
+    investigation log.
+
+    Why this matters for PWA hosting on GitHub Pages: GH Pages cannot set
+    `Cross-Origin-Opener-Policy` / `Cross-Origin-Embedder-Policy` headers
+    natively. coi-serviceworker is a JS shim that emulates them via a
+    service worker, so we get cross-origin isolation without changing
+    hosts. On first load the SW installs and forces a page reload; from
+    then on the page boots already isolated.
+
+    Must load BEFORE flutter_bootstrap.js so the SW is registered before
+    Flutter mounts. Default config uses `credentialless` COEP — see the
+    YouTube iframe at lib/features/train/widgets/course_youtube_iframe_web.dart
+    for the matching iframe attribute.
+  -->
+  <script src="coi-serviceworker.min.js"></script>
+
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Week-by-week puppy training tracker — Plan, 100 Experiences, Tips, and the MSPCA Level 1 course homework in one app.">
