@@ -119956,7 +119956,7 @@ Fw(a){return this.aB1(a)},
 aB1(a){var s=0,r=A.v(t.H)
 var $async$Fw=A.w(function(b,c){if(b===1)return A.r(c,r)
 for(;;)switch(s){case 0:s=2
-return A.n(A.aik(A.dq("https://redwylie.github.io/puppypath/privacy.html",0,null),B.nu),$async$Fw)
+return A.n(A.aik(A.dq("https://puppypath.org/privacy.html",0,null),B.nu),$async$Fw)
 case 2:if(!c&&a.e!=null)a.ah(t.Pu).f.n0(B.a8S)
 return A.t(null,r)}})
 return A.u($async$Fw,r)},
