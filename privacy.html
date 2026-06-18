@@ -179,6 +179,12 @@
           notifications, so the relevant notifications can be delivered to your
           device. You can turn this off per device in Settings, which removes the
           token from our servers.</li>
+        <li>An optional <strong>display name</strong>, used only to label
+          household notifications (so members see "Alex fed Rex" rather than
+          "Someone"). It may be pre-filled from your name if your sign-in provider
+          shares it (for example, Google or Apple), and you can set, change, or
+          clear it in Settings. If you leave it blank, these notifications simply
+          say "Someone".</li>
       </ul>
       <p>
         Where supported, you can also tap <strong>"Continue as guest"</strong>
@@ -253,12 +259,13 @@
         notifications, and on iOS these are delivered through <strong>Apple's
         Push Notification service (APNs)</strong>. To do this, we store a device
         notification token on our backend, and when a member logs a relevant
-        activity we send the notification's content — the name or email of the
-        member who logged it, the dog's name, and the activity (for example,
-        "Alex fed Rex") — to these services so they can deliver it to the other
-        members' devices. We use these services <strong>only to deliver
-        notifications</strong>; they are not used for analytics, tracking, or
-        advertising.
+        activity we send the notification's content — the dog's name, the
+        activity, and the logging member's display name <strong>if they have set
+        one</strong> (for example, "Alex fed Rex"; otherwise "Someone fed Rex") —
+        to these services so they can deliver it to the other members' devices. We
+        do <strong>not</strong> include email addresses in these notifications. We
+        use these services <strong>only to deliver notifications</strong>; they
+        are not used for analytics, tracking, or advertising.
       </p>
 
       <hr>
@@ -278,8 +285,9 @@
           of that shared dog, so everyone knows who has access.</li>
         <li>If members turn on household notifications, logging a meal, giving a
           medication dose, or starting a walk sends a push notification to the
-          other members' devices showing who logged it, the dog's name, and the
-          activity. Each member controls this for their own devices and can turn
+          other members' devices showing the dog's name, the activity, and the
+          logging member's display name if they've set one (no email is
+          included). Each member controls this for their own devices and can turn
           it off.</li>
         <li>As the owner you can remove members, hand off ownership, or a member
           can leave at any time. Guest (anonymous) accounts cannot create or
