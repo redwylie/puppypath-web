@@ -129,6 +129,11 @@
           up and sync your puppy log across your devices and to the people you
           explicitly invite. This data is stored on our backend provider,
           Supabase.</li>
+        <li><strong>Household notifications are optional.</strong> In apps that
+          support sharing, you can choose to receive a notification when another
+          member logs a meal, gives a medication dose, or starts a walk. You can
+          turn this off at any time, and it respects your device's notification
+          settings.</li>
         <li><strong>You can delete your account and data</strong> from within
           the app at any time.</li>
       </ul>
@@ -168,6 +173,11 @@
           <strong>Sign in with Apple</strong> and choose to hide your email, we
           only ever receive Apple's private relay address.</li>
         <li>The sign-in method you used (email, Google, Apple, or guest).</li>
+        <li>A <strong>device notification token</strong> (a random delivery
+          identifier issued by Apple or Google) if you turn on household
+          notifications, so the relevant notifications can be delivered to your
+          device. You can turn this off per device in Settings, which removes the
+          token from our servers.</li>
       </ul>
       <p>
         Where supported, you can also tap <strong>"Continue as guest"</strong>
@@ -183,8 +193,13 @@
           add a photo to a puppy profile or a moment. Photos you select stay on
           your device.</li>
         <li><strong>Notifications</strong> — to deliver the reminders you set up
-          (such as potty or medication reminders). These reminders are scheduled
-          locally on your device.</li>
+          (such as potty or medication reminders), which are scheduled locally
+          on your device; and, in apps that support sharing, if you turn the
+          feature on, to deliver <strong>household notifications</strong> when
+          another member logs a meal, gives a medication dose, or starts a walk.
+          Household notifications are delivered through Apple's and Google's push
+          services (see "Push notification delivery" below) and can be turned off
+          per device in Settings.</li>
       </ul>
       <p>
         Our apps do <strong>not</strong> request location, contacts, calendar,
@@ -230,6 +245,21 @@
         Your in-app preferences (theme, display settings) also stay local.
       </p>
 
+      <h3>Push notification delivery</h3>
+      <p>
+        If you turn on household notifications for a shared dog, we use
+        <strong>Google Firebase Cloud Messaging (FCM)</strong> to deliver push
+        notifications, and on iOS these are delivered through <strong>Apple's
+        Push Notification service (APNs)</strong>. To do this, we store a device
+        notification token on our backend, and when a member logs a relevant
+        activity we send the notification's content — the name or email of the
+        member who logged it, the dog's name, and the activity (for example,
+        "Alex fed Rex") — to these services so they can deliver it to the other
+        members' devices. We use these services <strong>only to deliver
+        notifications</strong>; they are not used for analytics, tracking, or
+        advertising.
+      </p>
+
       <hr>
 
       <h2>Sharing your data with other people</h2>
@@ -245,6 +275,11 @@
           never uploaded.</li>
         <li>They can see the <strong>email addresses</strong> of other members
           of that shared dog, so everyone knows who has access.</li>
+        <li>If members turn on household notifications, logging a meal, giving a
+          medication dose, or starting a walk sends a push notification to the
+          other members' devices showing who logged it, the dog's name, and the
+          activity. Each member controls this for their own devices and can turn
+          it off.</li>
         <li>As the owner you can remove members, hand off ownership, or a member
           can leave at any time. Guest (anonymous) accounts cannot create or
           join shared dogs.</li>
@@ -283,6 +318,8 @@
           the dogs you solely own from our servers, and clears the synced copy
           from your device. (If you co-own a shared dog, you'll be asked to hand
           off ownership first so the other members don't lose the shared log.)</li>
+        <li>When you turn off household notifications or sign out, the device
+          notification token for that device is removed from our servers.</li>
         <li>Inactive guest (anonymous) accounts that are never saved to an email
           may be automatically cleaned up after a period of inactivity.</li>
       </ul>
